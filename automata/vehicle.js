@@ -26,6 +26,7 @@ function Vehicle(){
 		vertex(-5,10);
 		vertex(5,10);
 		endShape(CLOSE);
+		line(0,0,0,-this.velocity.mag()*20); // just for visual feedback of velocity vector
 		pop();
 	}
 
