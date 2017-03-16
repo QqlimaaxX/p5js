@@ -33,5 +33,19 @@ function Vehicle(){
 		var desire = target.sub(this.location).setMag(this.maxSpeed);
 		this.applyForce(desire.sub(this.velocity));
 	}
+	
+	this.seekSmart = function(target){
+		//this function will make the vehicle slow down
+		//on reaching closer to the target = slowdownDist
+		var desire = target.sub(this.location);
+		var dist = desire.mag();		// this is the dist b/w target and vehicle
+		if(dist<this.slowdownDist){
+			desire.setMag(map(dist,0,this.slowdownDist,0,this.maxSpeed));
+		}else{
+			desire.setMag(this.maxSpeed);
+		}
+		var steer = desire.sub(this.velocity);
+		this.applyForce(steer);
+	}
 }
 
