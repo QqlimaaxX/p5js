@@ -3,7 +3,7 @@ function Vehicle(){
 	this.rotation=0;
 	this.acceleration=createVector(0,0);
 	this.velocity=createVector(0,0);
-	this.maxSpeed=5;
+	this.maxSpeed=7.5; //default was 5
 	this.maxForce=0.15;
 	this.slowdownDist = 200;
 	this.update= function(){
@@ -11,6 +11,7 @@ function Vehicle(){
 		this.velocity.limit(this.maxSpeed);
 		this.location.add(this.velocity);
 		this.acceleration.mult(0);
+		this.isOffScreen();
 	}
 
 	this.applyForce=function(force){
@@ -52,7 +53,15 @@ function Vehicle(){
 
 	this.follow=function(field){
 		var desire = field.lookup(this.location);
+		desire.setMag(this.maxSpeed);
 		this.applyForce(desire.sub(this.velocity));
+	}
+
+	this.isOffScreen = function(){
+		if (this.location.x>width||this.location.x<0||this.location.y>height||this.location.y<0){
+			this.location.x=(this.location.x+width)%width;
+			this.location.y=(this.location.y+height)%height;
+		}		
 	}
 
 }
