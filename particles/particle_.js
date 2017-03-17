@@ -9,10 +9,9 @@ function Particle(){
 	}
 
 	this.isOffScreen = function(){
-		// return(this.pos.x>width+10||this.pos.x<-10||this.pos.y>height+10||this.pos.y<-10);		
-		if(this.pos.x<0){this.pos.x=width;}
-	 	if(this.pos.x>width){this.pos.x=10;}
-		if(this.pos.y<0){this.pos.y=height;}
-		if(this.pos.y>height){this.pos.y=10;}
+		if (this.pos.x>width+10||this.pos.x<-10||this.pos.y>height+10||this.pos.y<-10){
+			this.pos.x=(this.pos.x+width)%width;
+			this.pos.y=(this.pos.y+height)%height;
+		}	
 	}
 }
