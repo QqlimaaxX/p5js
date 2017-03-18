@@ -36,7 +36,7 @@ function draw(){
 
 		if(gap<min_len){
 				alp = map(gap,0,min_len,1,0);
-				stkw = map(gap,1,min_len,1,5);
+				stkw = map(gap,1,min_len,2,0);
 				stroke('rgba(0,0,0,'+alp+')');
 				strokeWeight(stkw);
 				line(pos1.x,pos1.y,mouseX,mouseY);
