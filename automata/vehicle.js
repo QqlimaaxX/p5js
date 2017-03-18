@@ -48,5 +48,12 @@ function Vehicle(){
 		var steer = desire.sub(this.velocity);
 		this.applyForce(steer);
 	}
+	
+	this.isOffScreen = function(){
+		if (this.location.x>width||this.location.x<0||this.location.y>height||this.location.y<0){
+			this.location.x=(this.location.x+width)%width;
+			this.location.y=(this.location.y+height)%height;
+		}		
+	}
 }
 
