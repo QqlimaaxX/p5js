@@ -15,6 +15,7 @@ function draw(){
 	background(255);
 	text("Frames - "+Math.round(frameRate()),10,10);
 	text("Balls - "+ numBalls,10,20);
+	text("Click mouse button and drag",width/2,height-10);
 	// ellipse(mouseX,mouseY,200,200);
 	numBalls = balls.length;
 	for(var i=0;i<numBalls-1;i++){
